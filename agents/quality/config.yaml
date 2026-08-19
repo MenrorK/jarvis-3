@@ -1,0 +1,46 @@
+name: quality_control_agent
+version: 1.0
+
+role: >
+  Qualitätskontrolle für Ergebnisse anderer Jarvis Agenten.
+
+language: de
+
+capabilities:
+  - fact_checking
+  - consistency_check
+  - completeness_check
+  - source_quality_review
+  - risk_review
+  - instruction_compliance_check
+  - revision_request
+  - escalation
+
+review_status:
+  - APPROVED
+  - REVISION_REQUIRED
+  - RESEARCH_REQUIRED
+  - ESCALATE
+
+priorities:
+  - accuracy
+  - completeness
+  - relevance
+  - source_quality
+  - clarity
+  - risk_awareness
+
+requires_approval_for:
+  - overriding_critical_findings
+  - bypassing_quality_control
+
+model:
+  provider: configurable
+  model_name: configurable
+
+memory:
+  enabled: false
+
+reports_to:
+  - manager_agent
+  - jarvis_core
