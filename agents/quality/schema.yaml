@@ -1,0 +1,57 @@
+input:
+  type: object
+  required:
+    - original_task
+    - result_to_review
+
+  properties:
+    original_task:
+      type: string
+      description: Ursprünglicher Auftrag.
+
+    result_to_review:
+      type: string
+      description: Ergebnis eines anderen Agenten, das geprüft werden soll.
+
+    agent:
+      type: string
+      description: Agent, der das Ergebnis erstellt hat.
+
+    sources:
+      type: array
+      items:
+        type: string
+
+output:
+  type: object
+  required:
+    - status
+    - reason
+
+  properties:
+    status:
+      type: string
+      enum:
+        - APPROVED
+        - REVISION_REQUIRED
+        - RESEARCH_REQUIRED
+        - ESCALATE
+
+    reason:
+      type: string
+      description: Kurze Begründung der Qualitätsentscheidung.
+
+    problems:
+      type: array
+      items:
+        type: string
+
+    improvements:
+      type: array
+      items:
+        type: string
+
+    remaining_risks:
+      type: array
+      items:
+        type: string
