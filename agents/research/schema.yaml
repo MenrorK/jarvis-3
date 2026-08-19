@@ -1,0 +1,69 @@
+input:
+  type: object
+  required:
+    - research_task
+
+  properties:
+    research_task:
+      type: string
+      description: Konkrete Rechercheaufgabe des Manager Agent.
+
+    context:
+      type: object
+      description: Zusätzlicher Kontext zur Recherche.
+
+    freshness:
+      type: string
+      enum:
+        - current
+        - recent
+        - historical
+      default: current
+
+output:
+  type: object
+  required:
+    - status
+    - result
+
+  properties:
+    status:
+      type: string
+      enum:
+        - completed
+        - partial
+        - needs_information
+        - failed
+
+    result:
+      type: string
+
+    key_facts:
+      type: array
+      items:
+        type: string
+
+    sources:
+      type: array
+      items:
+        type: string
+
+    uncertainties:
+      type: array
+      items:
+        type: string
+
+    opportunities:
+      type: array
+      items:
+        type: string
+
+    risks:
+      type: array
+      items:
+        type: string
+
+    next_steps:
+      type: array
+      items:
+        type: string
