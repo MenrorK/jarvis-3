@@ -1,0 +1,60 @@
+input:
+  type: object
+  required:
+    - task
+
+  properties:
+    task:
+      type: string
+      description: Aufgabe, die der Manager Agent analysieren und koordinieren soll.
+
+    context:
+      type: object
+      description: Optionaler zusätzlicher Kontext zur Aufgabe.
+
+    priority:
+      type: string
+      enum:
+        - low
+        - normal
+        - high
+        - critical
+      default: normal
+
+output:
+  type: object
+  required:
+    - status
+    - result
+
+  properties:
+    status:
+      type: string
+      enum:
+        - completed
+        - delegated
+        - needs_approval
+        - needs_information
+        - failed
+
+    result:
+      type: string
+      description: Zusammengeführtes Ergebnis für Jarvis Core.
+
+    delegated_to:
+      type: array
+      items:
+        type: string
+
+    assumptions:
+      type: array
+      items:
+        type: string
+
+    risks:
+      type: array
+      items:
+        type: string
+
+    next_step:
+      type: string
