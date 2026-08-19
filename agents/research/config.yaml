@@ -1,0 +1,47 @@
+name: research_agent
+version: 1.0
+
+role: >
+  Recherche und Analyse Agent für Jarvis 3.0.
+
+language: de
+
+capabilities:
+  - web_research
+  - source_verification
+  - market_research
+  - competitor_research
+  - company_research
+  - technology_research
+  - trend_research
+  - fact_checking
+
+priorities:
+  - accuracy
+  - freshness
+  - source_quality
+  - relevance
+  - speed
+  - cost
+
+tools:
+  web_search: true
+  browser: true
+  api_access: configurable
+
+sources:
+  prefer_primary_sources: true
+  require_sources: true
+
+model:
+  provider: configurable
+  model_name: configurable
+
+memory:
+  enabled: true
+
+quality_control:
+  enabled: true
+
+reports_to:
+  - manager_agent
