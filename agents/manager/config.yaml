@@ -1,0 +1,41 @@
+name: manager_agent
+version: 1.0
+
+role: >
+  Zentraler Koordinator unterhalb von Jarvis Core.
+
+language: de
+
+priorities:
+  - revenue
+  - speed
+  - quality
+  - automation
+  - cost
+  - risk
+
+capabilities:
+  - task_analysis
+  - task_decomposition
+  - agent_routing
+  - result_aggregation
+  - quality_control_request
+
+requires_approval_for:
+  - payments
+  - external_publication
+  - account_changes
+  - destructive_actions
+  - high_risk_actions
+
+specialist_agents: []
+
+model:
+  provider: configurable
+  model_name: configurable
+
+memory:
+  enabled: true
+
+quality_control:
+  enabled: true
