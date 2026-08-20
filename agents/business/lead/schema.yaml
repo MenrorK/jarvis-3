@@ -1,0 +1,93 @@
+input:
+  type: object
+  required:
+    - lead_task
+    - offer
+
+  properties:
+    lead_task:
+      type: string
+      description: Konkrete Aufgabe zur Lead Suche oder Lead Qualifizierung.
+
+    offer:
+      type: object
+      description: Das konkrete Angebot vom Offer Agent.
+
+    target_group:
+      type: string
+      description: Zielgruppe des Angebots.
+
+    market:
+      type: string
+      description: Optionaler Markt oder Branchenfokus.
+
+    location:
+      type: string
+      description: Optionaler geografischer Fokus.
+
+    context:
+      type: object
+      description: Zusätzlicher Kontext vom Manager Agent.
+
+output:
+  type: object
+  required:
+    - status
+    - leads
+
+  properties:
+    status:
+      type: string
+      enum:
+        - completed
+        - partial
+        - needs_research
+        - needs_information
+        - failed
+
+    leads:
+      type: array
+      items:
+        type: object
+        properties:
+          company:
+            type: string
+
+          website:
+            type: string
+
+          target_group_fit:
+            type: integer
+
+          customer_problem:
+            type: string
+
+          economic_value:
+            type: string
+
+          automation_potential:
+            type: string
+
+          relevant_information:
+            type: array
+            items:
+              type: string
+
+          uncertainties:
+            type: array
+            items:
+              type: string
+
+          lead_score:
+            type: integer
+
+          lead_status:
+            type: string
+            enum:
+              - HOT
+              - WARM
+              - COLD
+              - REJECT
+
+          recommended_next_step:
+            type: string
