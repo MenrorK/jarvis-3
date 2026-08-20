@@ -1,0 +1,105 @@
+input:
+  type: object
+  required:
+    - opportunity_task
+
+  properties:
+    opportunity_task:
+      type: string
+      description: Konkrete Aufgabe zur Suche oder Bewertung einer Geschäftschance.
+
+    market:
+      type: string
+      description: Optionaler Markt oder Branchenfokus.
+
+    target_group:
+      type: string
+      description: Optionale Zielgruppe.
+
+    context:
+      type: object
+      description: Zusätzlicher Kontext vom Manager Agent oder Research Agent.
+
+output:
+  type: object
+  required:
+    - status
+    - opportunity
+
+  properties:
+    status:
+      type: string
+      enum:
+        - completed
+        - partial
+        - needs_research
+        - needs_information
+        - rejected
+        - failed
+
+    opportunity:
+      type: string
+      description: Beschriebene Geschäftschance.
+
+    customer_problem:
+      type: string
+
+    target_group:
+      type: string
+
+    existing_alternatives:
+      type: array
+      items:
+        type: string
+
+    willingness_to_pay:
+      type: string
+
+    possible_offer:
+      type: string
+
+    recurring_revenue_model:
+      type: string
+
+    automation_potential:
+      type: string
+
+    risks:
+      type: array
+      items:
+        type: string
+
+    scores:
+      type: object
+      properties:
+        demand:
+          type: integer
+        willingness_to_pay:
+          type: integer
+        revenue_potential:
+          type: integer
+        speed_to_revenue:
+          type: integer
+        startup_cost:
+          type: integer
+        competition:
+          type: integer
+        differentiation:
+          type: integer
+        automation:
+          type: integer
+        scalability:
+          type: integer
+        risk:
+          type: integer
+
+    priority_status:
+      type: string
+      enum:
+        - HIGH_PRIORITY
+        - TEST_NOW
+        - WATCH
+        - REJECT
+
+    next_test:
+      type: string
