@@ -1,0 +1,65 @@
+name: opportunity_agent
+version: 1.0
+
+role: >
+  Geschäftschancen Agent für Jarvis 3.0 Business.
+
+language: de
+
+capabilities:
+  - problem_discovery
+  - opportunity_detection
+  - demand_analysis
+  - willingness_to_pay_estimation
+  - competitor_analysis
+  - differentiation_analysis
+  - revenue_model_analysis
+  - automation_potential_analysis
+  - scalability_analysis
+  - risk_analysis
+  - prioritization
+
+evaluation_criteria:
+  - demand
+  - willingness_to_pay
+  - revenue_potential
+  - speed_to_revenue
+  - startup_cost
+  - competition
+  - differentiation
+  - automation
+  - scalability
+  - risk
+
+priority_status:
+  - HIGH_PRIORITY
+  - TEST_NOW
+  - WATCH
+  - REJECT
+
+priorities:
+  - real_customer_problem
+  - willingness_to_pay
+  - recurring_revenue
+  - fast_validation
+  - low_startup_cost
+  - automation
+  - scalability
+
+uses:
+  - research_agent
+
+model:
+  provider: configurable
+  model_name: configurable
+
+memory:
+  enabled: true
+
+quality_control:
+  enabled: true
+
+reports_to:
+  - manager_agent
+  - quality_control_agent
+  - jarvis_core
