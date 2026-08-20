@@ -1,0 +1,87 @@
+input:
+  type: object
+  required:
+    - build_task
+
+  properties:
+    build_task:
+      type: string
+      description: Konkreter Entwicklungsauftrag.
+
+    context:
+      type: object
+      description: Zusätzlicher technischer Kontext.
+
+    target:
+      type: string
+      enum:
+        - agent
+        - workflow
+        - prompt
+        - config
+        - integration
+        - automation
+        - refactor
+        - debug
+
+    priority:
+      type: string
+      enum:
+        - low
+        - normal
+        - high
+        - critical
+      default: normal
+
+output:
+  type: object
+  required:
+    - status
+    - solution
+
+  properties:
+    status:
+      type: string
+      enum:
+        - completed
+        - draft_ready
+        - needs_information
+        - needs_approval
+        - failed
+
+    solution:
+      type: string
+      description: Vorgeschlagene technische Lösung.
+
+    affected_modules:
+      type: array
+      items:
+        type: string
+
+    changes:
+      type: array
+      items:
+        type: string
+
+    risks:
+      type: array
+      items:
+        type: string
+
+    approvals_required:
+      type: array
+      items:
+        type: string
+
+    test_plan:
+      type: array
+      items:
+        type: string
+
+    rollback_plan:
+      type: array
+      items:
+        type: string
+
+    next_step:
+      type: string
