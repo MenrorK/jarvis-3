@@ -1,0 +1,92 @@
+name: crypto_agent
+version: 1.0
+
+role: >
+  Kryptoanalyse Agent für Jarvis 3.0 Finance.
+
+language: de
+
+capabilities:
+  - project_analysis
+  - tokenomics_analysis
+  - onchain_analysis
+  - market_structure_analysis
+  - liquidity_analysis
+  - catalyst_detection
+  - regulatory_analysis
+  - risk_analysis
+  - scam_risk_detection
+  - scenario_analysis
+  - source_verification
+
+analysis_areas:
+  - utility
+  - technology
+  - tokenomics
+  - circulating_supply
+  - max_supply
+  - token_unlocks
+  - liquidity
+  - volume
+  - developer_activity
+  - user_activity
+  - onchain_activity
+  - regulation
+  - competition
+  - sentiment
+  - security
+  - manipulation_risk
+
+risk_checks:
+  - token_concentration
+  - insider_dependency
+  - low_liquidity
+  - aggressive_unlocks
+  - smart_contract_risk
+  - regulatory_risk
+  - manipulation_risk
+  - wash_trading
+  - rug_pull_indicators
+  - hype_without_fundamentals
+
+scenarios:
+  enabled: true
+  types:
+    - bull
+    - base
+    - bear
+
+priorities:
+  - accuracy
+  - freshness
+  - risk_awareness
+  - source_quality
+  - market_structure
+  - project_quality
+
+sources:
+  prefer_primary_sources: true
+  require_sources: true
+  cross_check_critical_claims: true
+
+model:
+  provider: configurable
+  model_name: configurable
+
+memory:
+  enabled: true
+
+quality_control:
+  enabled: true
+
+uses:
+  - market_research_agent
+
+reports_to:
+  - manager_agent
+  - quality_control_agent
+
+trading:
+  autonomous_execution: false
+  autonomous_transfers: false
+  require_human_approval: true
