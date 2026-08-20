@@ -1,0 +1,130 @@
+name: revenue_pipeline
+version: 1.0
+
+description: >
+  Erster Business Workflow von Jarvis 3.0.
+  Er verbindet Recherche, Chancenbewertung, Angebotsentwicklung,
+  Lead Qualifizierung und Vertrieb.
+
+trigger:
+  type: user_request
+
+input:
+  required:
+    - goal
+
+  optional:
+    - market
+    - target_group
+    - location
+    - budget
+    - constraints
+
+workflow:
+
+  - step: 1
+    id: research
+    agent: research_agent
+    action: market_and_problem_research
+    output: research_result
+
+  - step: 2
+    id: opportunity
+    agent: opportunity_agent
+    action: identify_and_score_opportunities
+    input:
+      research: research_result
+    output: opportunity_result
+
+  - step: 3
+    id: opportunity_quality
+    agent: quality_control_agent
+    action: review
+    input:
+      result: opportunity_result
+
+    on:
+      APPROVED: offer
+      REVISION_REQUIRED: opportunity
+      RESEARCH_REQUIRED: research
+      ESCALATE: user_approval
+
+  - step: 4
+    id: offer
+    agent: offer_agent
+    action: build_offer
+    input:
+      opportunity: opportunity_result
+    output: offer_result
+
+  - step: 5
+    id: offer_quality
+    agent: quality_control_agent
+    action: review
+    input:
+      result: offer_result
+
+    on:
+      APPROVED: lead
+      REVISION_REQUIRED: offer
+      RESEARCH_REQUIRED: research
+      ESCALATE: user_approval
+
+  - step: 6
+    id: lead
+    agent: lead_agent
+    action: discover_and_qualify_leads
+    input:
+      offer: offer_result
+    output: lead_result
+
+  - step: 7
+    id: sales
+    agent: sales_agent
+    action: prepare_sales_strategy
+    input:
+      offer: offer_result
+      leads: lead_result
+    output: sales_result
+
+  - step: 8
+    id: final_quality
+    agent: quality_control_agent
+    action: final_review
+    input:
+      result: sales_result
+    output: final_result
+
+  - step: 9
+    id: manager
+    agent: manager_agent
+    action: aggregate_results
+    input:
+      research: research_result
+      opportunity: opportunity_result
+      offer: offer_result
+      leads: lead_result
+      sales: sales_result
+      quality: final_result
+
+  - step: 10
+    id: approval
+    agent: jarvis_core
+    action: request_user_approval
+
+approval_required_for:
+  - sending_external_messages
+  - publishing_content
+  - paid_actions
+  - account_changes
+  - destructive_actions
+
+success_criteria:
+  - validated_customer_problem
+  - viable_business_opportunity
+  - concrete_offer
+  - qualified_leads
+  - actionable_sales_strategy
+
+end_state:
+  status: ready_for_user_approval
