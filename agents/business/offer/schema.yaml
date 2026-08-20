@@ -1,0 +1,103 @@
+input:
+  type: object
+  required:
+    - offer_task
+
+  properties:
+    offer_task:
+      type: string
+      description: Konkrete Aufgabe zur Entwicklung oder Verbesserung eines Angebots.
+
+    opportunity:
+      type: object
+      description: Validierte Geschäftschance vom Opportunity Agent.
+
+    target_group:
+      type: string
+      description: Zielgruppe des Angebots.
+
+    customer_problem:
+      type: string
+      description: Konkretes Kundenproblem.
+
+    context:
+      type: object
+      description: Zusätzlicher Kontext vom Manager Agent.
+
+output:
+  type: object
+  required:
+    - status
+    - offer
+
+  properties:
+    status:
+      type: string
+      enum:
+        - completed
+        - partial
+        - needs_research
+        - needs_information
+        - failed
+
+    offer:
+      type: string
+
+    offer_name:
+      type: string
+
+    target_group:
+      type: string
+
+    customer_problem:
+      type: string
+
+    value_proposition:
+      type: string
+
+    promised_outcome:
+      type: string
+
+    scope:
+      type: array
+      items:
+        type: string
+
+    setup_service:
+      type: array
+      items:
+        type: string
+
+    recurring_service:
+      type: array
+      items:
+        type: string
+
+    pricing_logic:
+      type: string
+
+    recurring_revenue_model:
+      type: string
+
+    add_ons:
+      type: array
+      items:
+        type: string
+
+    objections:
+      type: array
+      items:
+        type: string
+
+    requirements:
+      type: array
+      items:
+        type: string
+
+    risks:
+      type: array
+      items:
+        type: string
+
+    next_sales_test:
+      type: string
