@@ -1,0 +1,106 @@
+input:
+  type: object
+  required:
+    - sales_task
+    - lead
+    - offer
+
+  properties:
+    sales_task:
+      type: string
+      description: Konkrete Vertriebsaufgabe.
+
+    lead:
+      type: object
+      description: Qualifizierter Lead vom Lead Agent.
+
+    offer:
+      type: object
+      description: Relevantes Angebot vom Offer Agent.
+
+    context:
+      type: object
+      description: Zusätzlicher Kontext vom Manager Agent.
+
+output:
+  type: object
+  required:
+    - status
+    - sales_strategy
+
+  properties:
+    status:
+      type: string
+      enum:
+        - completed
+        - partial
+        - needs_research
+        - needs_information
+        - needs_approval
+        - failed
+
+    sales_strategy:
+      type: string
+
+    lead:
+      type: string
+
+    customer_problem:
+      type: string
+
+    relevant_offer:
+      type: string
+
+    strongest_value_argument:
+      type: string
+
+    recommended_channel:
+      type: string
+      enum:
+        - email
+        - phone
+        - linkedin
+        - website_contact_form
+        - referral
+        - direct_business_inquiry
+
+    channel_reason:
+      type: string
+
+    first_contact_message:
+      type: string
+
+    conversation_opener:
+      type: string
+
+    objections:
+      type: array
+      items:
+        type: object
+        properties:
+          objection:
+            type: string
+          response:
+            type: string
+
+    follow_up_strategy:
+      type: array
+      items:
+        type: string
+
+    meeting_probability:
+      type: integer
+
+    closing_probability:
+      type: integer
+
+    risks:
+      type: array
+      items:
+        type: string
+
+    next_sales_step:
+      type: string
+
+    approval_required:
+      type: boolean
