@@ -1,0 +1,102 @@
+input:
+  type: object
+  required:
+    - stock_task
+
+  properties:
+    stock_task:
+      type: string
+      description: Konkrete Aufgabe zur Aktien oder Unternehmensanalyse.
+
+    ticker:
+      type: string
+      description: Börsenkürzel des Unternehmens, falls bekannt.
+
+    company:
+      type: string
+      description: Unternehmensname, falls bekannt.
+
+    timeframe:
+      type: string
+      enum:
+        - short_term
+        - medium_term
+        - long_term
+      default: long_term
+
+    context:
+      type: object
+      description: Zusätzlicher Kontext vom Manager oder Market Research Agent.
+
+output:
+  type: object
+  required:
+    - status
+    - summary
+
+  properties:
+    status:
+      type: string
+      enum:
+        - completed
+        - partial
+        - needs_information
+        - failed
+
+    summary:
+      type: string
+      description: Zusammenfassende Aktien und Unternehmensanalyse.
+
+    business_model:
+      type: string
+
+    financials:
+      type: object
+
+    valuation:
+      type: object
+
+    competitors:
+      type: array
+      items:
+        type: string
+
+    catalysts:
+      type: array
+      items:
+        type: string
+
+    opportunities:
+      type: array
+      items:
+        type: string
+
+    risks:
+      type: array
+      items:
+        type: string
+
+    scenarios:
+      type: object
+      properties:
+        bull:
+          type: string
+        base:
+          type: string
+        bear:
+          type: string
+
+    uncertainties:
+      type: array
+      items:
+        type: string
+
+    sources:
+      type: array
+      items:
+        type: string
+
+    next_steps:
+      type: array
+      items:
+        type: string
