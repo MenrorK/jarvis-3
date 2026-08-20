@@ -1,0 +1,101 @@
+input:
+  type: object
+  required:
+    - market_task
+
+  properties:
+    market_task:
+      type: string
+      description: Konkrete Marktanalyse oder Rechercheaufgabe.
+
+    market:
+      type: string
+      enum:
+        - equities
+        - crypto
+        - commodities
+        - forex
+        - rates
+        - macro
+        - multi_market
+      default: multi_market
+
+    timeframe:
+      type: string
+      enum:
+        - intraday
+        - short_term
+        - medium_term
+        - long_term
+      default: short_term
+
+    context:
+      type: object
+      description: Zusätzlicher Kontext vom Manager Agent.
+
+output:
+  type: object
+  required:
+    - status
+    - market_summary
+
+  properties:
+    status:
+      type: string
+      enum:
+        - completed
+        - partial
+        - needs_information
+        - failed
+
+    market_summary:
+      type: string
+
+    market_bias:
+      type: string
+      enum:
+        - bullish
+        - slightly_bullish
+        - neutral
+        - slightly_bearish
+        - bearish
+
+    key_events:
+      type: array
+      items:
+        type: string
+
+    key_data:
+      type: array
+      items:
+        type: string
+
+    opportunities:
+      type: array
+      items:
+        type: string
+
+    risks:
+      type: array
+      items:
+        type: string
+
+    uncertainties:
+      type: array
+      items:
+        type: string
+
+    sources:
+      type: array
+      items:
+        type: string
+
+    affected_markets:
+      type: array
+      items:
+        type: string
+
+    next_steps:
+      type: array
+      items:
+        type: string
