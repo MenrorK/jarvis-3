@@ -1,0 +1,110 @@
+input:
+  type: object
+  required:
+    - crypto_task
+
+  properties:
+    crypto_task:
+      type: string
+      description: Konkrete Aufgabe zur Analyse einer Kryptowährung oder eines Blockchain Projekts.
+
+    symbol:
+      type: string
+      description: Kürzel der Kryptowährung, falls bekannt.
+
+    project:
+      type: string
+      description: Name des Projekts, falls bekannt.
+
+    timeframe:
+      type: string
+      enum:
+        - short_term
+        - medium_term
+        - long_term
+      default: medium_term
+
+    context:
+      type: object
+      description: Zusätzlicher Kontext vom Manager oder Market Research Agent.
+
+output:
+  type: object
+  required:
+    - status
+    - summary
+
+  properties:
+    status:
+      type: string
+      enum:
+        - completed
+        - partial
+        - needs_information
+        - failed
+
+    summary:
+      type: string
+
+    project_overview:
+      type: string
+
+    utility:
+      type: string
+
+    technology:
+      type: string
+
+    tokenomics:
+      type: object
+
+    market_structure:
+      type: object
+
+    onchain:
+      type: object
+
+    catalysts:
+      type: array
+      items:
+        type: string
+
+    opportunities:
+      type: array
+      items:
+        type: string
+
+    risks:
+      type: array
+      items:
+        type: string
+
+    scam_indicators:
+      type: array
+      items:
+        type: string
+
+    scenarios:
+      type: object
+      properties:
+        bull:
+          type: string
+        base:
+          type: string
+        bear:
+          type: string
+
+    uncertainties:
+      type: array
+      items:
+        type: string
+
+    sources:
+      type: array
+      items:
+        type: string
+
+    next_steps:
+      type: array
+      items:
+        type: string
